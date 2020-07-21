@@ -1,4 +1,9 @@
-// https://wiki.openssl.org/index.php/SSL/TLS_Client
+// example from https://wiki.openssl.org/index.php/SSL/TLS_Client
+// with updated certificates file
+
+
+//#define HOST_NAME "www.google.com"
+//#define HOST_RESOURCE "/"
 
 #include "openssl-bio-fetch.h"
 
@@ -10,9 +15,9 @@ void print_san_name(const char* label, X509* const cert);
 void print_error_string(unsigned long err, const char* const label);
 
 /* Cipher suites, https://www.openssl.org/docs/apps/ciphers.html */
-const char* const PREFERRED_CIPHERS = "HIGH:!aNULL:!kRSA:!SRP:!PSK:!CAMELLIA:!RC4:!MD5:!DSS";
+//const char* const PREFERRED_CIPHERS = "HIGH:!aNULL:!kRSA:!SRP:!PSK:!CAMELLIA:!RC4:!MD5:!DSS";
 
-#if 0
+#if 1
 const char* const PREFERRED_CIPHERS = "kEECDH:kEDH:kRSA:AESGCM:AES256:AES128:3DES:SHA256:SHA84:SHA1:!aNULL:!eNULL:!EXP:!LOW:!MEDIUM!ADH:!AECDH";
 #endif
 
@@ -47,6 +52,8 @@ const char* PREFERRED_CIPHERS =
 "DH-DSS-DES-CBC3-SHA:"
 "DH-RSA-DES-CBC3-SHA";
 #endif
+
+
 
 int main(int argc, char* argv[])
 {
