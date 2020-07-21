@@ -15,3 +15,13 @@ openssl s_client -connect www.random.org:443 -showcerts
 see also:
 
 https://github.com/openssl/openssl/blob/master/apps/s_client.c
+
+https://pki.goog/
+
+https://stackoverflow.com/questions/29939204/getting-google-search-ssl-pem-certificate
+
+https://curl.haxx.se/libcurl/c/example.html
+
+https://repl.it/@MarcoTessarotto/httpsget
+
+
