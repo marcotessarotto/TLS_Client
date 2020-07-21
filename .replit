@@ -1,0 +1,2 @@
+language = "c"
+run = "clang-7 -pthread -lm -lssl -lcrypto -o main openssl-bio-fetch.c; ./main"
