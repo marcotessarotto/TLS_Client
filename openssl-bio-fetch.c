@@ -1,9 +1,23 @@
 // example from https://wiki.openssl.org/index.php/SSL/TLS_Client
-// with updated certificates file
+// with updated certificates files
+
+#define SAMPLE 1
 
 
-//#define HOST_NAME "www.google.com"
-//#define HOST_RESOURCE "/"
+#if SAMPLE == 1
+
+#define CERT_FILE "random_org_2020.crt"
+#define HOST_NAME "www.random.org"
+#define HOST_RESOURCE "/cgi-bin/randbyte?nbytes=32&format=h"
+
+#elif SAMPLE == 2
+
+#define CERT_FILE "www_google_com.crt"
+#define HOST_NAME "www.google.com"
+#define HOST_RESOURCE "/"
+
+#endif
+
 
 #include "openssl-bio-fetch.h"
 
@@ -117,8 +131,7 @@ int main(int argc, char* argv[])
         UNUSED(old_opts);
 
         /* http://www.openssl.org/docs/ssl/SSL_CTX_load_verify_locations.html */
-        //res = SSL_CTX_load_verify_locations(ctx, "random-org-chain.pem", NULL);
-        res = SSL_CTX_load_verify_locations(ctx, "random_org_2020.crt", NULL);
+        res = SSL_CTX_load_verify_locations(ctx, CERT_FILE, NULL);
         ssl_err = ERR_get_error();
 
         ASSERT(1 == res);
